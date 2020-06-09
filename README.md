@@ -1,2 +1,2 @@
 # randomQuoteGen
-Random quote generator 
+Random quote generator, mostly philosophy 
