@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Random Philosophy Quote</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div id="langShift">
+			<a href="/indexES.html">ES</a>
+		</div>
+		<h1 id="mainTitle" class="Center">
+			LITTLE BITS <br />
+			OF <br />
+			KNOWLEDGE
+		</h1>
+
+		<!--  Quotes  -->
+		<div id="quoteBox">
+			<div id="quoteDisplay" class="Center">
+				Random Philosophy Quote Generator
+			</div>
+			<br />
+			<div id="autorDisplay" class="Center">-Edands</div>
+			<br />
+		</div>
+		<div id="nextBtn" class="Center">
+			<button onclick="newQuote()" class="inputStyle">NEXT</button>
+			<br />
+			<a id="sendSuggestion" href="javascript:void(0)" onclick="showPage()"
+				>send your quotes</a
+			>
+		</div>
+
+		<!-- Form -->
+		<div id="suggestBox">
+			<form name="suggestQuote" action="" method="get">
+				QUOTE:<br />
+				<textarea type="text" id="quoteInput" value="" class="inputStyle">
+Be the change that you wish to see in the world.</textarea
+				>
+				<br />
+				AUTOR:<br />
+				<input
+					type="text"
+					id="autorInput"
+					value="Mahatma Gandhi"
+					class="inputStyle"
+				/>
+				<br />
+			</form>
+			<br />
+			<button id="formBtn" onclick="addQuote();showPage()" class="inputStyle">
+				SEND
+			</button>
+			<br />
+			<a id="sendSuggestion" href="javascript:void(0)" onclick="showPage()"
+				>go back</a
+			>
+		</div>
+		<!-- Javascript -->
+		<script src="script.js"></script>
+	</body>
+</html>
