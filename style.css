@@ -85,7 +85,7 @@ h1 {
 }
 
 #quoteDisplay,
-#autorDisplay {
+#authorDisplay {
 	padding: 80px;
 	padding-top: 0px;
 	padding-bottom: 0px;
@@ -101,7 +101,7 @@ h1 {
 
 .inputStyle {
 	border: 2px solid;
-	background-color: #272626;
+	background-color: #151410;
 	border-color: #707070;
 	color: #ffffff;
 	font-size: 10pt;
@@ -185,7 +185,7 @@ input {
 	}
 
 	#quoteDisplay,
-	#autorDisplay {
+	#authorDisplay {
 		padding: 32px;
 		padding-top: 0px;
 		padding-bottom: 0px;
