@@ -184,103 +184,27 @@ function showPage() {
 	}
 }
 
-// =========== PaperQuotes API =====================
-
 // Push a random quote generated from api into the html
 
 function newApiQuote() {
-	let randomApiIndex = randomNumber(apiQuotes);
-	document.getElementById("quoteDisplay").innerHTML = `${randomApiIndex.quote}`;
-	document.getElementById(
-		"authorDisplay"
-	).innerHTML = `\-${randomApiIndex.author}`;
+	document.getElementById("quoteDisplay").innerHTML = `${apiQuote}`;
+	document.getElementById("authorDisplay").innerHTML = `\-${apiAuthor}`;
 }
-
-// changing tags in the quote url forces an api call with new quotes
-
-var tags = [
-	"philosophy",
-	"wisdom",
-	"wise-sayings",
-	"motivational",
-	"money",
-	"passion",
-	"kingdom",
-	"opportunities",
-	"principles",
-	"serving-god",
-	"love",
-	"purpose",
-	"jobless",
-	"people",
-	"values",
-	"worship",
-	"life",
-	"employment",
-	"work",
-	"service",
-	"time",
-	"god",
-	"destiny",
-	"brainy-quotes",
-	"civilization",
-	"human-being",
-	"inspirational",
-	"awakening",
-	"wise-sayings",
-	"humanity",
-	"wise",
-	"conscience-quotes",
-	"human-life",
-	"words-of-wisdom",
-	"conscience",
-];
-
-var apiQuotes = undefined;
-var apiCalls = 0;
+var apiQuote = undefined;
+var apiAuthor = undefined;
 
 $("#nextQuote").click(function () {
-	let randomTagIndex = randomNumber(tags);
-
-	randomTags = [];
-
-	if (!(randomTagIndex in randomTags));
-	{
-		uniqueTag = randomTagIndex;
-		randomTags.push(uniqueTag);
-	}
-
-	if (apiCalls < 10) {
-		var url = `https://api.paperquotes.com/apiv1/quotes/?tags=${uniqueTag}&lang=en`;
-		$.ajax({
-			type: "GET",
-			url: url,
-			beforeSend: function (xhr) {
-				xhr.setRequestHeader(
-					"Authorization",
-					"Token 0e60d24f5b25f3864de8d7f6e4c855257cea4b3c"
-				);
-			},
-			success: function (result) {
-				console.log(result.results);
-				var quotesResults = result.results;
-				if (apiQuotes == undefined) {
-					apiQuotes = quotesResults;
-				} else {
-					for (let index = 0; index < quotesResults.length; index++) {
-						apiQuotes.push(quotesResults[index]);
-					}
-				}
-				newApiQuote();
-
-				apiCalls = apiCalls + 1;
-			},
-			error: function (result) {
-				newQuote();
-				//handle the error with falllback quotes
-			},
+	$.getJSON("https://api.quotable.io/random", function (data) {
+		console.log(`${data.content} —${data.author}`);
+		apiQuote = data.content;
+		apiAuthor = data.author;
+	})
+		.done(function () {
+			console.log("successful sending quote from api");
+			newApiQuote();
+		})
+		.fail(function () {
+			newQuote();
+			console.log("error sending quote from fallback");
 		});
-	} else {
-		newApiQuote();
-	}
 });
