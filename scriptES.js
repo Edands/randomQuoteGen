@@ -132,16 +132,54 @@ var quotesFallback = [
 	},
 ];
 
+// Random num from an index function
+
+function randomNumber(iterable) {
+	let randomNum = Math.floor(Math.random() * iterable.length);
+	return iterable[randomNum];
+}
+
 //	Display a random quote from the premade quotesFallback object
 
 function newQuote() {
-	let randomNum = Math.floor(Math.random() * quotesFallback.length);
-	document.getElementById(
-		"quoteDisplay"
-	).innerHTML = `${quotesFallback[randomNum].quote}`;
-	document.getElementById(
-		"authorDisplay"
-	).innerHTML = `\-${quotesFallback[randomNum].author}`;
+	let quotesFallbackRandom = randomNumber(quotesFallback);
+
+	let quoteFall = quotesFallbackRandom.quote;
+
+	let authorFall = quotesFallbackRandom.author;
+
+	//Empties the quote paragraph
+
+	$("p").empty();
+
+	// Appends the new quote with an typing animation
+
+	var ele = "<span>" + quoteFall.split("").join("</span><span>") + "</span>";
+
+	$(ele)
+		.hide()
+		.appendTo("p")
+		.each(function (i) {
+			$(this)
+				.delay(40 * i)
+				.css({
+					display: "inline",
+					opacity: 0,
+				})
+				.animate(
+					{
+						opacity: 1,
+					},
+					100
+				);
+		});
+
+	// Fades in the author name
+	$("#authorDisplay").animate({ opacity: 0 }, 600, function () {
+		$(this)
+			.html("-" + authorFall)
+			.animate({ opacity: 1 }, 400);
+	});
 }
 
 // Adding quotes to the premade ones
@@ -153,7 +191,7 @@ function addQuote() {
 	};
 
 	let quoteInput = document.getElementById("quoteInput").value;
-	let autorInput = document.getElementById("authorInput").value;
+	let authorInput = document.getElementById("authorInput").value;
 
 	qFormat.quote = String(quoteInput);
 	qFormat.autor = String(authorInput);
@@ -178,98 +216,3 @@ function showPage() {
 		nextBtn.style.display = "flex";
 	}
 }
-
-// =========== PaperQuotes API =====================
-
-// Push a random quote generated from api into the html
-/* 
-function newApiQuote() {
-	let randomNum = Math.floor(Math.random() * apiQuotes.length);
-	document.getElementById(
-		"quoteDisplay"
-	).innerHTML = `${apiQuotes[randomNum].quote}`;
-	document.getElementById(
-		"authorDisplay"
-	).innerHTML = `\-${apiQuotes[randomNum].author}`;
-}
-
-// changing tags in the quote url forces an api call with new quotes
-
-var tags = [
-	"philosophy",
-	"wisdom",
-	"wise-sayings",
-	"motivational",
-	"money",
-	"passion",
-	"kingdom",
-	"opportunities",
-	"principles",
-	"serving-god",
-	"love",
-	"purpose",
-	"jobless",
-	"people",
-	"values",
-	"worship",
-	"life",
-	"employment",
-	"work",
-	"service",
-	"time",
-	"god",
-	"destiny",
-	"brainy-quotes",
-	"civilization",
-	"human-being",
-	"inspirational",
-	"awakening",
-	"wise-sayings",
-	"humanity",
-	"wise",
-	"conscience-quotes",
-	"human-life",
-	"words-of-wisdom",
-	"conscience",
-];
-
-var tagIndex = 0;
-var apiQuotes = undefined;
-var apiCalls = 0;
-
-$("#nextQuote").click(function () {
-	var url = `https://api.paperquotes.com/apiv1/quotes/?lang=es`;
-	$.ajax({
-		type: "GET",
-		url: url,
-		beforeSend: function (xhr) {
-			xhr.setRequestHeader(
-				"Authorization",
-				"Token 0e60d24f5b25f3864de8d7f6e4c855257cea4b3c"
-			);
-		},
-		success: function (result) {
-			console.log(result.results);
-			var quotesResults = result.results;
-			if (apiQuotes == undefined) {
-				apiQuotes = quotesResults;
-			} else {
-				for (let index = 0; index < quotesResults.length; index++) {
-					if (apiCalls == 1 || (apiCalls - 1) % 4 == 0) {
-						apiQuotes.push(quotesResults[index]);
-					}
-				}
-			}
-			newApiQuote();
-			if (apiCalls == 0 || apiCalls % 4 == 0) {
-				tagIndex = tagIndex + 1;
-			}
-			apiCalls = apiCalls + 1;
-		},
-		error: function (result) {
-			newQuote();
-			//handle the error with falllback quotes
-		},
-	});
-});
- */
