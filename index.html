@@ -22,13 +22,14 @@
 				Random Philosophy Quote Generator
 			</div>
 			<br />
-			<div id="autorDisplay" class="Center">
+			<div id="authorDisplay" class="Center">
 				<a href="https://github.com/Edands">-Made by Edands</a>
 			</div>
 			<br />
 		</div>
 		<div id="nextBtn" class="Center">
-			<button onclick="newQuote()" class="inputStyle">
+			<!-- onclick="newQuote()" To revert to old -->
+			<button id="nextQuote" class="inputStyle">
 				<div>NEXT</div>
 			</button>
 			<br />
@@ -45,10 +46,10 @@
 Be the change that you wish to see in the world.</textarea
 				>
 				<br />
-				AUTOR:<br />
+				AUTHOR:<br />
 				<input
 					type="text"
-					id="autorInput"
+					id="authorInput"
 					value="Mahatma Gandhi"
 					class="inputStyle"
 				/>
@@ -64,6 +65,7 @@ Be the change that you wish to see in the world.</textarea
 			>
 		</div>
 		<!-- Javascript -->
+		<script src="jquery-3.5.1.min.js"></script>
 		<script src="script.js"></script>
 	</body>
 </html>
