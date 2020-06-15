@@ -128,7 +128,7 @@ var quotesFallback = [
 	},
 ];
 
-// Random num function
+// Random num from an index function
 
 function randomNumber(iterable) {
 	let randomNum = Math.floor(Math.random() * iterable.length);
@@ -138,13 +138,44 @@ function randomNumber(iterable) {
 //	Display a random quote from the premade quotesFallback object
 
 function newQuote() {
-	quotesFallRandom = randomNumber(quotesFallback);
-	document.getElementById(
-		"quoteDisplay"
-	).innerHTML = `${quotesFallRandom.quote}`;
-	document.getElementById(
-		"authorDisplay"
-	).innerHTML = `\-${quotesFallRandom.author}`;
+	let quotesFallbackRandom = randomNumber(quotesFallback);
+
+	let quoteFall = quotesFallbackRandom.quote;
+
+	let authorFall = quotesFallbackRandom.author;
+
+	//Empties the quote paragraph
+
+	$("p").empty();
+
+	// Appends the new quote with an typing animation
+
+	var ele = "<span>" + quoteFall.split("").join("</span><span>") + "</span>";
+
+	$(ele)
+		.hide()
+		.appendTo("p")
+		.each(function (i) {
+			$(this)
+				.delay(40 * i)
+				.css({
+					display: "inline",
+					opacity: 0,
+				})
+				.animate(
+					{
+						opacity: 1,
+					},
+					100
+				);
+		});
+
+	// Fades in the author name
+	$("#authorDisplay").animate({ opacity: 0 }, 600, function () {
+		$(this)
+			.html("-" + authorFall)
+			.animate({ opacity: 1 }, 400);
+	});
 }
 
 // Adding quotes to the premade ones
@@ -187,11 +218,44 @@ function showPage() {
 // Push a random quote generated from api into the html
 
 function newApiQuote() {
-	document.getElementById("quoteDisplay").innerHTML = `${apiQuote}`;
-	document.getElementById("authorDisplay").innerHTML = `\-${apiAuthor}`;
+	//Empties the quote paragraph
+
+	$("p").empty();
+
+	// Appends the new quote with an typing animation
+
+	var ele = "<span>" + apiQuote.split("").join("</span><span>") + "</span>";
+
+	$(ele)
+		.hide()
+		.appendTo("p")
+		.each(function (i) {
+			$(this)
+				.delay(40 * i)
+				.css({
+					display: "inline",
+					opacity: 0,
+				})
+				.animate(
+					{
+						opacity: 1,
+					},
+					100
+				);
+		});
+
+	// Fades in the author name
+	$("#authorDisplay").animate({ opacity: 0 }, 600, function () {
+		$(this)
+			.html("-" + apiAuthor)
+			.animate({ opacity: 1 }, 400);
+	});
 }
+
 var apiQuote = undefined;
 var apiAuthor = undefined;
+
+// Get json from api with quotes and author data
 
 $("#nextQuote").click(function () {
 	$.getJSON("https://api.quotable.io/random", function (data) {
@@ -200,11 +264,11 @@ $("#nextQuote").click(function () {
 		apiAuthor = data.author;
 	})
 		.done(function () {
-			console.log("successful sending quote from api");
+			console.log("successful. showing quote from api");
 			newApiQuote();
 		})
 		.fail(function () {
 			newQuote();
-			console.log("error sending quote from fallback");
+			console.log("error. showing quote from fallback");
 		});
 });
