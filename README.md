@@ -9,4 +9,5 @@ I got the background from [SVGBackgrounds](https://www.svgbackgrounds.com/).
 Using [Quotable API](https://github.com/lukePeavey/quotable) to retrieve random quotes.
 
 Feel free to suggest stuff, i am willing to learn. 
+
 I will work on this on the future to futher improve it.
