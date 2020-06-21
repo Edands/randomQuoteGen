@@ -208,6 +208,13 @@ input {
 		margin-bottom: 20px;
 	}
 }
+
+@media only screen and (max-width: 640px) {
+	body {
+		margin: 0px;
+	}
+}
+
 /* ========================================================================== */
 
 hr {
