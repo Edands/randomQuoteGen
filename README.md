@@ -1,7 +1,8 @@
 # randomQuoteGen deployed at https://edands.github.io/randomQuoteGen/
 
 Yet another random quote generator 
-Made just a little practice proyect using HTML, CSS, Javascript and a bit of jQuery.
+
+Made just as a practice proyect using HTML, CSS, Javascript and a bit of jQuery.
 
 I got the background from [SVGBackgrounds](https://www.svgbackgrounds.com/).
 
