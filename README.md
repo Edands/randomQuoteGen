@@ -1,10 +1,11 @@
-# randomQuoteGen preview at https://edands.github.io/randomQuoteGen/
+# randomQuoteGen deployed at https://edands.github.io/randomQuoteGen/
 
-A simple Random quote generator, just a little practice proyect to get me back at html, css and vanilla javascript.
-
-Feel free to suggest stuff, i am willing to listen and learn. 
-I will work on this on the future to futher improve it.
+Yet another random quote generator 
+Made just a little practice proyect using HTML, CSS, Javascript and a bit of jQuery.
 
 I got the background from [SVGBackgrounds](https://www.svgbackgrounds.com/).
 
 Using [Quotable API](https://github.com/lukePeavey/quotable) to retrieve random quotes.
+
+Feel free to suggest stuff, i am willing to learn. 
+I will work on this on the future to futher improve it.
