@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Random Philosophy Quote</title>
+		<link rel="stylesheet" href="resources/style/style.css" />
+	</head>
+	<body>
+		<div id="langShift">
+			<a href="/index.html">EN</a>
+		</div>
+		<h1 id="mainTitle" class="Center">
+			TROZOS <br />
+			DE <br />
+			CONOCIMIENTO
+		</h1>
+
+		<!--  Quotes  -->
+		<div id="quoteBox">
+			<div id="quoteDisplay" class="Center">
+				<p>Genrador de citas Filosóficas</p>
+			</div>
+			<br />
+			<div id="authorDisplay" class="Center">
+				<a href="https://github.com/Edands">-Hecho por Edands</a>
+			</div>
+			<br />
+		</div>
+		<div id="nextBtn" class="Center">
+			<button onclick="newQuote()" id="nextQuote" class="inputStyle">
+				<div>SIGUIENTE</div>
+			</button>
+			<br />
+			<a id="sendSuggestion" href="javascript:void(0)" onclick="showPage()"
+				>envía tus citas</a
+			>
+		</div>
+
+		<!-- Form -->
+		<div id="suggestBox">
+			<form name="suggestQuote" action="" method="get">
+				CITA:<br />
+				<textarea type="text" id="quoteInput" value="" class="inputStyle">
+Sé el cambio que quieres ver en el mundo.</textarea
+				>
+				<br />
+				AUTOR:<br />
+				<input
+					type="text"
+					id="authorInput"
+					value="Mahatma Gandhi"
+					class="inputStyle"
+				/>
+				<br />
+			</form>
+			<br />
+			<button id="formBtn" onclick="addQuote();showPage()" class="inputStyle">
+				<div>ENVIAR</div>
+			</button>
+			<br />
+			<a id="sendSuggestion" href="javascript:void(0)" onclick="showPage()"
+				>go back</a
+			>
+		</div>
+		<!-- Javascript -->
+		<script src="resources/js/jquery-3.5.1.min.js"></script>
+		<script src="resources/js/scriptES.js"></script>
+	</body>
+</html>
