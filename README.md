@@ -1,4 +1,4 @@
-# randomQuoteGen deployed at https://edands.github.io/randomQuoteGen/
+# [randomQuoteGen](https://edands.github.io/randomQuoteGen/)
 
 Yet another random quote generator 
 
